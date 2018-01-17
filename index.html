@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
-  <head>
+<head>
     <meta charset="utf-8">
     <title>VueJS Exercise</title>
     <meta name="author" content="">
@@ -10,25 +10,48 @@
 
     <!-- https://vuejs.org/v2/guide/#Getting-Started -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  </head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+</head>
 
-  <body>
+<body>
 
     <!-- https://vuejs.org/v2/guide/index.html -->
     <div id="app">
-      <!--
-           TODO Show collection data. See js/script.js
-           - Show collection Title
-           - For each item (https://vuejs.org/v2/guide/index.html#Conditionals-and-Loops)
-             - Display a link for the item "href" property
-             - Display the item data. For each data element:
-               - Display its "prompt" property in bold style
-               - Display its "value" property in italic style
-      -->
+        <!--
+             TODO Show collection data. See js/script.js
+             - Show collection Title
+             - For each item (https://vuejs.org/v2/guide/index.html#Conditionals-and-Loops)
+               - Display a link for the item "href" property
+               - Display the item data. For each data element:
+                 - Display its "prompt" property in bold style
+                 - Display its "value" property in italic style
+        -->
+
+        <h1> {{d.collection.title}}</h1>
+
+        <div class="row" >
+            <div v-for="todo in d.collection.items" class="card col-lg-4 ">
+                <div class="card-body">
+                    <h5 class="card-title">{{todo.data[0].value}}</h5>
+                    <ul>
+                        <li v-for="peli in todo.data">
+                            <b>{{peli.prompt}}:&nbsp;</b>
+                            <i>{{peli.value}}</i>
+                        </li>
+                    </ul>
+                   <a class="card-link" v-bind:href="todo.href">Ver en wikipedia</a>
+                </div>
+                
+            </div>
+        </div>
+
 
     </div>
 
     <script src="js/script.js"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+</body>
 
 </html>
