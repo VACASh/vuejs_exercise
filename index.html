@@ -33,10 +33,11 @@
             <div class="row">
                 <div v-for="todo in d.collection.items" class="card col-md-4 ">
                     <div class="card-body">
+                        <img class="card-img-top" v-for="peli in todo.data" v-if=" peli.name=='image'  " v-bind:src="peli.value" alt="Card image cap">
 
                         <h5 class="card-title btn-outline-info" style="padding:0.75em; border:1px solid #17a2b8; border-radius:4px" v-for="peli in todo.data" v-if=" peli.name=='name' ">{{peli.value}}</h5>
                         <ul>
-                            <li v-for="peli in todo.data" v-if=" peli.name!='name' ">
+                            <li v-for="peli in todo.data" v-if=" peli.name!='name' &&  peli.name!='image'">
 
                                 <b>{{peli.prompt}}:&nbsp;</b>
                                 <i>{{peli.value}}</i>
