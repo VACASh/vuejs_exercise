@@ -27,25 +27,28 @@
                  - Display its "value" property in italic style
         -->
 
-        <h1> {{d.collection.title}}</h1>
+        
+        <div class="container">
+            <h1> {{d.collection.title}}</h1>
+            <div class="row">
+                <div v-for="todo in d.collection.items" class="card col-md-4 ">
+                    <div class="card-body">
 
-        <div class="row" >
-            <div v-for="todo in d.collection.items" class="card col-lg-4 ">
-                <div class="card-body">
-                    <h5 class="card-title">{{todo.data[0].value}}</h5>
-                    <ul>
-                        <li v-for="peli in todo.data">
-                            <b>{{peli.prompt}}:&nbsp;</b>
-                            <i>{{peli.value}}</i>
-                        </li>
-                    </ul>
-                   <a class="card-link" v-bind:href="todo.href">Ver en wikipedia</a>
+                        <h5 class="card-title btn-outline-info" style="padding:0.75em; border:1px solid #17a2b8; border-radius:4px" v-for="peli in todo.data" v-if=" peli.name=='name' ">{{peli.value}}</h5>
+                        <ul>
+                            <li v-for="peli in todo.data" v-if=" peli.name!='name' ">
+
+                                <b>{{peli.prompt}}:&nbsp;</b>
+                                <i>{{peli.value}}</i>
+                            </li>
+                        </ul>
+                        <a class="card-link" v-bind:href="todo.href">Ver en wikipedia</a>
+                    </div>
+
                 </div>
-                
             </div>
+
         </div>
-
-
     </div>
 
     <script src="js/script.js"></script>
